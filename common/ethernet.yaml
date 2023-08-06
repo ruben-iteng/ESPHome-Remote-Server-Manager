@@ -1,0 +1,16 @@
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_IN
+  phy_addr: 1
+  power_pin: GPIO16
+  #manual_ip:
+  #  static_ip: 10.0.0.42
+  #  gateway: 10.0.0.1
+  #  subnet: 255.255.255.0
+
+text_sensor:
+  - platform: ethernet_info
+    ip_address:
+      name: "IP Address"

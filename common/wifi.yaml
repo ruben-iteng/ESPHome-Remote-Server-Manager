@@ -1,0 +1,16 @@
+wifi:
+  # Set up a wifi access point using the device name above
+  ap:
+    #password: "12345678"
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device.
+captive_portal:
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+    ssid:
+    bssid:
+    mac_address:
+    scan_results:

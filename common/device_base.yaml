@@ -1,0 +1,16 @@
+esp32:
+  board: esp32doit-devkit-v1
+  framework:
+    type: arduino
+    version: recommended
+
+# To be able to get logs from the device via serial and api.
+logger:
+  #baud_rate: 0 # set to 0 to disable logging via UART
+  level: WARN #NONE, ERROR, WARN, DEBUG, VERBOSE, VERY_VERBOSE
+
+# API is a requirement of the dashboard import.
+api:
+
+# OTA is required for Over-the-Air updating
+ota:

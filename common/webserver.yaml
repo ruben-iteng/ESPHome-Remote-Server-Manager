@@ -1,0 +1,14 @@
+web_server:
+  port: 80 #The port the web server should open its socket on.
+  #css_url: #The URL that should be used for the CSS stylesheet. Defaults to https://esphome.io/_static/webserver-v1.min.css (updates will go to v2, v3, etc). Can be set to empty string.
+  css_include: "./common/webserver-v1.min.css" #Path to local file to be included in web server index page. Contents of this file will be served as /0.css and used as CSS stylesheet by internal webserver. Useful when building device without internet access, where you want to use built-in AP and webserver.
+  #js_url: #The URL that should be used for the JS script. Defaults to https://esphome.io/_static/webserver-v1.min.js. Can be set to empty string.
+  js_include: "./common/webserver-v1.min.js" #Path to local file to be included in web server index page. Contents of this file will be served as /0.js and used as JS script by internal webserver. Useful when building device without internet access, where you want to use built-in AP and webserver.
+  auth: #Enables a simple Digest authentication with username and password.
+    username: "admin" #The username to use for authentication.
+    password: "Ch@ngeM3" #The password to check for authentication.
+  include_internal: false #Whether internal entities should be displayed on the web interface. Defaults to false.
+  ota: true #Turn on or off the OTA feature inside webserver. Strongly not suggested without enabled authentication settings. Defaults to true. Cannot be used with the esp-idf framework.
+  #id: #Manually specify the ID used for code generation.
+  local: true #Include supporting javascript locally allowing it to work without internet access. Defaults to false.
+  version: 2 #1 or 2. Version 1 displays as a table. Version 2 uses web components and has more functionality. Defaults to 2.

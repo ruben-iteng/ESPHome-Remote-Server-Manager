@@ -1,0 +1,104 @@
+packages:
+  stream_server: !include stream_server.yaml
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO39
+      inverted: true
+      mode:
+        input: true
+        #pullup: true # not supported on GPIO39 implement in hardware
+    name: "Reset Button"
+  - platform: gpio
+    pin:
+      number: GPIO35
+      inverted: false
+      mode:
+        input: true
+        #pull resistor not supported on GPIO35
+    name: "Power State"
+    id: power_state
+    device_class: power
+
+output:
+  - platform: gpio
+    pin:
+      number: GPIO15
+      inverted: false
+      mode:
+        output: true
+        pulldown: true
+    id: power_button
+
+button:
+  - platform: template
+    name: "Power"
+    icon: "mdi:power"
+    on_press:
+      - if:
+          condition:
+            binary_sensor.is_on: power_state
+          then:
+            - logger.log: "Powering OFF ODROID"
+            - output.turn_on: power_button
+            - delay: 5s
+            - output.turn_off: power_button
+          else:
+            - logger.log: "Powering ON ODROID"
+            - output.turn_on: power_button
+            - delay: 500ms
+            - output.turn_off: power_button
+
+light:
+  - platform: fastled_spi
+    chipset: APA102
+    data_pin: GPIO14
+    clock_pin: GPIO12
+    num_leds: 3
+    data_rate: 5Mhz
+    #rgb_order: RGB
+    name: "Adressable Lights"
+    effects:
+      - addressable_color_wipe:
+
+switch:
+  - platform: gpio
+    pin:
+      number: GPIO2
+      inverted: false
+      mode:
+        output: true
+        pullup: true
+    id: usb_0_power
+    name: "USB 0"
+  - platform: gpio
+    pin:
+      number: GPIO32
+      inverted: false
+      mode:
+        output: true
+        pulldown: true
+    id: usb_1_power
+    name: "USB 1"
+  - platform: gpio
+    pin:
+      number: GPIO33
+      inverted: false
+      mode:
+        output: true
+        pulldown: true
+    id: usb_2_power
+    name: "USB 2"
+
+# connected to ODROID
+# esp32 uart_2
+uart:
+  tx_pin: GPIO17
+  rx_pin: GPIO5
+  baud_rate: 115200
+  data_bits: 8
+  parity: NONE
+  stop_bits: 1
+  rx_buffer_size: 256
+  id: uart_odroid

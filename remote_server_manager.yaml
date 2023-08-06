@@ -1,0 +1,55 @@
+###############################################################################
+# ESPHome remote server manager
+#
+# With this ESPHome configuration you will be able to access the BIOS and
+# terminal of the computer connected via UART over a serial TCP stream.
+# At the same time basic things can be controlled and monitored remotely.
+#
+###############################################################################
+
+#################################################
+# "global variables"
+#################################################
+substitutions:
+  node_name: "esphomersm"
+  node_friendly_name: "ESPHome RSM (remote server manager)"
+  comment: "With this ESPHome configuration you will be able to access the BIOS and terminal of the computer connected via UART over a serial TCP stream. At the same time basic things can be controlled and monitored remotely."
+  global_update_interval: 60s
+  debug_update_interval: 5s
+
+#################################################
+# Choose the packages you want to use here
+#################################################
+packages:
+  device_base: !include common/device_base.yaml
+  odroid_h3_mitx_adapter: !include common/odroid_h3_mitx_adapter.yaml
+  webserver: !include common/webserver.yaml
+  #advanced_debugging: !include common/advanced_debugging.yaml
+
+  # Either wifi or ethernet
+  #wifi: !include common/wifi.yaml
+  ethernet: !include common/ethernet.yaml
+
+  # Activate improv if using wifi (one of two)
+  #improv_ble: !include common/improv_ble.yaml
+  #improv_serial: !include common/improv_serial.yaml
+
+#################################################
+# Do not eddit the stuff below!
+#################################################
+esphome:
+  name: "${node_name}"
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+
+  # This will allow for (future) project identification,
+  # configuration and updates.
+  project:
+    name: esphome.${node_name}
+    version: "1.0.0"
+
+# This should point to the public location of this yaml file.
+dashboard_import:
+  package_import_url: github://ruben-iteng/ESPHome-Remote-Server-Manager/remote_server_manager.yaml@main
+  import_full_config: false

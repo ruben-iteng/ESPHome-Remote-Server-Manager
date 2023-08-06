@@ -1,21 +1,24 @@
-# ESPHome Project Template
+# ESPHome remote server manager
 
-This repo serves as a template for creating a new ESPHome project.
+With this ESPHome configuration you will be able to access the BIOS and terminal of the computer connected via UART over a serial TCP stream. At the same time basic things can be controlled and monitored remotely.
 
-It includes a GitHub workflow that will automatically build the configuration(s) and then deploys a simple 
-website via GitHub pages that utilises [ESP Web Tools](https://esphome.github.io/esp-web-tools/) for users to 
-easily install your project onto their device.
+## Features
 
-## Instructions
+- Raw UART stream over TCP
+  - Access via <NODE_NAME>.local:6638
+  - Or access via <NODE_IP>:6638
+- Webserver for control
+  - Access via <NODE_NAME>.local:80
+  - Or access via <NODE_IP>:80
 
-1. Use this repo template to [generate](https://github.com/esphome/esphome-project-template/generate) your own repository.
-   - Make sure to check `Include all branches` so that GitHub Pages is automatically enabled.
-2. Clone your new repository.
-3. Add your project specific YAML configuration(s) along with the contents of the `project-template-....yaml` files, taking note of the comments in this template file and name accordingly.
-4. 
-    a. Update [.github/workflows/publish.yml](.github/workflows/publish.yml) to contain your own YAML config filename(s).
-    b. Update [.github/workflows/ci.yml](.github/workflows/ci.yml) to contain your own YAML config filename(s).
-5. Update [static/_config.yml](static/_config.yml) to change the title, description and basic theme of the generated website.
-6. Add more content to the [static/index.md](static/index.md) file to explain your project.
-    Make sure to leave the installation code tags in place so users get the install button.
-7. Push your changes to the repository and GitHub Actions will automatically build and deploy your project.
+These features are available when used in combination with the hardware of [this project](https://github.com/ruben-iteng/ODROID-H3-mITX-adapter)
+
+- Remote UART terminal (e.g. BIOS access)
+- 3x USB power control (turn on/off USB power)
+- Button input
+- 3x APA102 on board RGB LEDs (can be extended via header)
+- PC power button control by ESP32 via optocoupler
+- Always-on, powered by +5V_STBY
+- Connected via Ethernet
+
+## [Documentation](https://ruben-iteng.github.io/ESPHome-Remote-Server-Manager)
