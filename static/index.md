@@ -5,8 +5,8 @@ With this ESPHome configuration you will be able to access the BIOS and terminal
 ## Features
 
 - Raw UART stream over TCP
-  - Access via <NODE_NAME>.local:6638
-  - Or access via <NODE_IP>:6638
+  - Access via NODE_NAME.local:6638
+  - Or access via NODE_IP:6638
 
 These features are available when used in combination with the hardware of [this project](https://github.com/ruben-iteng/ODROID-H3-mITX-adapter)
 
@@ -43,4 +43,4 @@ You can use the button below to install the pre-built firmware directly to your 
 ### DIY mode
 
 - Install ESPHome from within [Home Assistant](https://esphome.io/guides/getting_started_command_line.html) or using [Docker](https://esphome.io/guides/getting_started_command_line.html)
-- Use [this](https://github.com/ruben-iteng/ESPHome-Remote-Server-Manager/blob/main/project-template-esp32.yaml) yaml configuration, compile with ESPHome and flash it to your device
+- Use [this](https://github.com/ruben-iteng/ESPHome-Remote-Server-Manager/blob/main/remote_server_manager.yaml) yaml configuration, compile with ESPHome and flash it to your device
