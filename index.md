@@ -32,6 +32,15 @@ These features are available when used in combination with the hardware of [this
 
 ## Installation
 
+### Hardware
+
+Connect an USB to UART converter to the `ESP32 PROGRAMMING` header or directly to the ESP32 board.
+Before applying power connect `GPIO0` to `GND`, then when powered remove the connection (this will put the ESP32 into bootloader mode).
+
+*Note 1: Watch `RX` and `TX` orientation! USB to UART `RX` should be connected to ESP32's `TX` and visa versa.*
+
+*Note 2: You can power the ESP32 board from the 3V3 of your USB to UART converter if no ODROID is connected.*
+
 ### Easy mode
 
 You can use the button below to install the pre-built firmware directly to your device via USB from the browser ([WebUSB](https://en.wikipedia.org/wiki/WebUSB) compatibility required).
